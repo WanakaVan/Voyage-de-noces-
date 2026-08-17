@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci ! — Notre voyage de noces au Rwanda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1F3D2B;
+    --forest-light: #3A6B4A;
+    --clay: #A8452F;
+    --sand: #EDE4D3;
+    --gold: #D9A441;
+    --ink: #241C15;
+    --mist: #7C9885;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'Public Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(180deg, #FBF3DE 0%, var(--sand) 55%);
+    overflow: hidden;
+    padding: 2rem 1.5rem;
+  }
+
+  .sun {
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    width: 340px;
+    height: 340px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,164,65,0.55) 0%, rgba(217,164,65,0.18) 45%, rgba(217,164,65,0) 72%);
+    animation: glow 7s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  @keyframes glow {
+    0%, 100% { opacity: 0.75; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.06); }
+  }
+
+  .hills {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 46%;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: riseIn 1.1s ease-out forwards;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--clay);
+    font-weight: 600;
+    margin-bottom: 1.1rem;
+    animation-delay: 0.1s;
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: clamp(4.5rem, 16vw, 9rem);
+    line-height: 0.95;
+    color: var(--forest);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--clay);
+  }
+
+  .hero-sub {
+    margin-top: 1.4rem;
+    font-size: clamp(1rem, 2.4vw, 1.25rem);
+    color: var(--forest-light);
+    font-weight: 500;
+    max-width: 26ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 1px;
+    height: 46px;
+    background: linear-gradient(180deg, var(--forest) 0%, transparent 100%);
+    opacity: 0.5;
+    animation: pulseLine 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulseLine {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.55; }
+  }
+
+  /* ---------- IMIGONGO DIVIDER ---------- */
+
+  .imigongo {
+    height: 34px;
+    width: 100%;
+    background-image:
+      linear-gradient(135deg, var(--clay) 25%, transparent 25.5%),
+      linear-gradient(225deg, var(--clay) 25%, transparent 25.5%),
+      linear-gradient(45deg, var(--ink) 25%, transparent 25.5%),
+      linear-gradient(315deg, var(--ink) 25%, transparent 25.5%);
+    background-position: 0 0, 17px 0, 0 0, 17px 0;
+    background-size: 34px 34px;
+    background-color: var(--sand);
+  }
+
+  /* ---------- STORY ---------- */
+
+  .story {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 5.5rem 1.75rem 4.5rem;
+  }
+
+  .story p {
+    font-size: clamp(1.02rem, 1.6vw, 1.14rem);
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .story p.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .story p.lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+    line-height: 1.45;
+    color: var(--forest);
+    margin-bottom: 2.2rem;
+  }
+
+  .story p.signoff {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--clay);
+    text-align: center;
+    margin-top: 2.4rem;
+  }
+
+  /* ---------- FILM ---------- */
+
+  .film {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0.5rem 1.5rem 5.5rem;
+    text-align: center;
+  }
+
+  .film .label {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--clay);
+    font-weight: 600;
+    margin-bottom: 1.4rem;
+  }
+
+  .video-frame {
+    background: var(--forest);
+    padding: 14px;
+    border-radius: 4px;
+    box-shadow: 0 24px 48px -20px rgba(31, 61, 43, 0.45);
+  }
+
+  .video-frame .video-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .video-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  .closing {
+    text-align: center;
+    padding: 3.5rem 1.5rem 2.5rem;
+    background: var(--forest);
+    color: var(--sand);
+  }
+
+  .closing p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, .sun, .hero-content, .scroll-cue, .story p {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="sun"></div>
+
+    <svg class="hills" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="#7C9885" opacity="0.55" d="M0,180 C240,90 420,220 660,140 C900,60 1140,190 1440,110 L1440,320 L0,320 Z"/>
+      <path fill="#3A6B4A" opacity="0.8" d="M0,230 C220,150 460,260 720,190 C980,120 1180,240 1440,180 L1440,320 L0,320 Z"/>
+      <path fill="#1F3D2B" d="M0,270 C260,210 500,290 760,240 C1020,190 1220,280 1440,240 L1440,320 L0,320 Z"/>
+    </svg>
+
+    <div class="hero-content">
+      <span class="eyebrow">Rwanda · Voyage de noces</span>
+      <h1 class="hero-title">Merci<em>!</em></h1>
+      <p class="hero-sub">Le pays aux mille collines, grâce à vous</p>
+    </div>
+
+    <div class="scroll-cue"></div>
+  </header>
+
+  <div class="imigongo" aria-hidden="true"></div>
+
+  <main class="story">
+    <p class="lede">Un peu plus de deux ans après cette belle journée partagée avec vous, nous nous sommes envolés pour le Rwanda pour notre voyage de noces.</p>
+
+    <p>Grâce à vous, nous avons découvert un pays incroyablement accueillant et chaleureux, vivant et verdoyant. Nous avons eu un énorme coup de cœur pour le pays aux mille collines (qui sont plutôt des montagnes !).</p>
+
+    <p>Pour celles et ceux qui ont une bonne mémoire, la destination initiale était l'Inde mais notre changement de cap a finalement été un choix qui a payé !</p>
+
+    <p>Rien de tel que des paysages, des visages et une faune exceptionnelle pour résumer ce merveilleux voyage.</p>
+
+    <p class="signoff">Encore merci !</p>
+  </main>
+
+  <div class="imigongo" aria-hidden="true"></div>
+
+  <section class="film">
+    <span class="label">Le film du voyage</span>
+    <div class="video-frame">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/ayQ13ZoKdG4" title="Notre voyage de noces au Rwanda" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="closing">
+    <p>Karibu Rwanda 🌿</p>
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll('.story p');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    items.forEach(p => observer.observe(p));
+  </script>
+
+</body>
+</html>
