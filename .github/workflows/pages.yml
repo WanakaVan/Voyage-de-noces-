@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - claude/github-pages-deploy-aehwl7
   workflow_dispatch:
 
 permissions:
